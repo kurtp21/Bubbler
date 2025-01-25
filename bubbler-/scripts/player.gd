@@ -15,6 +15,7 @@ func _physics_process(delta: float) -> void:
 		direction.x = -SPEED
 	elif Input.is_action_pressed("DOWN"):
 		direction.y = SPEED
+		$Gun.position = (0,0)
 	elif Input.is_action_pressed("UP"):
 		direction.y = -SPEED
 	
