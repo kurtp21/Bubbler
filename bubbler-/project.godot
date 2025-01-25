@@ -11,5 +11,16 @@ config_version=5
 [application]
 
 config/name="Bubbler"
+run/main_scene="res://scene/game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1500
+window/size/viewport_height=900
+window/size/borderless=true
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
