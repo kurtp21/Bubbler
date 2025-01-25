@@ -8,8 +8,15 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Vector2.ZERO # stay in place
 	
-	direction.x = Input.get_axis("ui_left", "ui_right")
-	direction.y = Input.get_axis("ui_up", "ui_down")
+	
+	if Input.is_action_pressed("RIGHT"):
+		direction.x = SPEED
+	elif Input.is_action_pressed("LEFT"):
+		direction.x = -SPEED
+	elif Input.is_action_pressed("DOWN"):
+		direction.y = SPEED
+	elif Input.is_action_pressed("UP"):
+		direction.y = -SPEED
 	
 	if direction.length() > 0:
 		direction = direction.normalized()
