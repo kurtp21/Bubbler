@@ -1,29 +1,22 @@
 extends CharacterBody2D
 
 const SPEED = 500.0
-const LIFE = 5
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $HealthBar
-
-var player_health = LIFE
 
 func _ready() -> void:
-	health_bar.value = player_health
-	health_bar.max_value = LIFE
-	health_bar.visible = true
+	$HealthBar.value = 5
+	$HealthBar.visible = true
+	print($HealthBar.value)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 func _on_mouse_entered() -> void: #SPECIFICALLY FOR TESTING
-	#player_health -= 1
-	#health_bar.value = player_health
-	health_bar.value -=1
 	$HealthBar.value -= 1
 	
-	if player_health <= 0:
+	if $HealthBar.value <= 0:
 		_die()
 
 func _physics_process(delta: float) -> void:
