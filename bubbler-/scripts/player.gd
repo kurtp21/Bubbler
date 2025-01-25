@@ -1,22 +1,14 @@
 extends CharacterBody2D
 
 const SPEED = 500.0
-const LIFE = 5
 
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var health_bar = $HealthBar
-
-var player_health = LIFE
 
 func _ready() -> void:
-	health_bar.value = 5
-	health_bar.max_value = 5
-	health_bar.visible = true
-	set_process_input(true)
-	mouse_entered.connect(_on_mouse_entered)
-	
+	$HealthBar.value = 5
+	$HealthBar.visible = true
 	input_pickable = true
-	
+	print($HealthBar.value)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -26,6 +18,13 @@ var bullet_scene = preload("res://scenes/bullet.tscn")
 var bullets = []
 enum dir {right, left, up, down}
 var facing = dir.down
+
+func _on_mouse_entered() -> void: #SPECIFICALLY FOR TESTING
+	$HealthBar.value -= 1
+	
+	if $HealthBar.value <= 0:
+		_die()
+
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector2.ZERO # stay in place
@@ -85,16 +84,4 @@ func _physics_process(delta: float) -> void:
 	#_on_mouse_entered()
 	
 func _die() -> void:
-	print("Player Died!")
-
-
-func _on_mouse_entered() -> void:
-	#player_health -= 1sw
-	#health_bar.value = player_healthwwwwwww
-
-	print(1)
-	health_bar.value -=1
-	$HealthBar.value -= 1
-	
-	if player_health <= 0:
-		_die()
+	queue_free()

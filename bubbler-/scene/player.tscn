@@ -194,13 +194,11 @@ position = Vector2(1, -31)
 scale = Vector2(147.711, 186.527)
 shape = SubResource("CircleShape2D_opjmb")
 
-[node name="Gun" type="Marker2D" parent="."]
-
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = -37.0
-offset_top = -1.0
-offset_right = 3.0
-offset_bottom = 39.0
+offset_left = -33.0
+offset_top = -80.0
+offset_right = 7.0
+offset_bottom = -40.0
 scale = Vector2(1.67379, 0.20835)
 max_value = 5.0
 nine_patch_stretch = true
