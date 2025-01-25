@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpi7wf05i8ok6"]
+[gd_scene load_steps=4 format=3 uid="uid://dpi7wf05i8ok6"]
 
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
+[ext_resource type="PackedScene" uid="uid://bi7emox5p1lgs" path="res://scenes/barrier.tscn" id="2_tsqlv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hg2rj"]
 
@@ -22,3 +23,6 @@ position = Vector2(735, 2)
 rotation = -3.13976
 scale = Vector2(8.64674, 2.63973)
 shape = SubResource("WorldBoundaryShape2D_hg2rj")
+
+[node name="Barrier" parent="." instance=ExtResource("2_tsqlv")]
+position = Vector2(397, 305)
