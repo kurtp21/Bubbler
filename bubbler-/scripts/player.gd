@@ -24,5 +24,5 @@ func _physics_process(delta: float) -> void:
 	var player_height = $CollisionShape2D.shape.get_rect().size.y
 	
 	position.x = clamp(position.x, player_width, viewport.x)
-	position.y = clamp(position.y, player_height, viewport.y)
+	position.y = clamp(viewport.y, player_height, position.y)
 	

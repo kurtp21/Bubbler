@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpi7wf05i8ok6"]
+[gd_scene load_steps=3 format=3 uid="uid://dpi7wf05i8ok6"]
 
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hg2rj"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(0, -1)
@@ -12,3 +14,11 @@ position = Vector2(119, 170)
 position = Vector2(-2, 0)
 scale = Vector2(0.957848, -7.38621)
 anchor_mode = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(735, 2)
+rotation = -3.13976
+scale = Vector2(8.64674, 2.63973)
+shape = SubResource("WorldBoundaryShape2D_hg2rj")
