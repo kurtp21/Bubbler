@@ -1,8 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://th46bmid4jwk"]
+[gd_scene load_steps=4 format=3 uid="uid://th46bmid4jwk"]
+
+[ext_resource type="Script" path="res://scripts/bubble.gd" id="1_g0rt6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e1h0l"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_g232t"]
+
 [node name="Bubble" type="Area2D"]
+script = ExtResource("1_g0rt6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_e1h0l")
+
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+offset_left = -39.0
+offset_top = 10.0
+offset_right = 40.0
+offset_bottom = 22.0
+max_value = 5.0
+nine_patch_stretch = true
+texture_progress = SubResource("CanvasTexture_g232t")
+tint_progress = Color(0.184314, 1, 1, 1)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
