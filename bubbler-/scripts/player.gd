@@ -9,22 +9,18 @@ const LIFE = 5
 var player_health = LIFE
 
 func _ready() -> void:
-	health_bar.value = player_health
-	health_bar.max_value = LIFE
+	health_bar.value = 5
+	health_bar.max_value = 5
 	health_bar.visible = true
+	set_process_input(true)
+	mouse_entered.connect(_on_mouse_entered)
+	
+	input_pickable = true
+	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func _on_mouse_entered() -> void: #SPECIFICALLY FOR TESTING
-	#player_health -= 1
-	#health_bar.value = player_health
-	health_bar.value -=1
-	$HealthBar.value -= 1
-	
-	if player_health <= 0:
-		_die()
 
 var bullet_scene = preload("res://scenes/bullet.tscn")
 var bullets = []
@@ -34,7 +30,7 @@ var facing = dir.down
 func _physics_process(delta: float) -> void:
 	var direction = Vector2.ZERO # stay in place
 	
-
+	
 	if Input.is_action_pressed("RIGHT"):
 		facing = dir.right
 		direction.x = SPEED*delta
@@ -86,5 +82,19 @@ func _physics_process(delta: float) -> void:
 	position.y = clamp(position.y, player_height, viewport.y)
 	position.y = clamp(viewport.y, player_height, position.y)
 	
+	#_on_mouse_entered()
+	
 func _die() -> void:
 	print("Player Died!")
+
+
+func _on_mouse_entered() -> void:
+	#player_health -= 1sw
+	#health_bar.value = player_healthwwwwwww
+
+	print(1)
+	health_bar.value -=1
+	$HealthBar.value -= 1
+	
+	if player_health <= 0:
+		_die()
