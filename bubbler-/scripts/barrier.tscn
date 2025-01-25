@@ -39,4 +39,5 @@ tint_progress = Color(0, 1, 0.0784314, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(8, 8)
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
