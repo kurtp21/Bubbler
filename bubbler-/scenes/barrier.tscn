@@ -27,9 +27,9 @@ scale = Vector2(0.140625, 0.140625)
 texture = ExtResource("1_m1bmr")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
-offset_left = -10.0
+offset_left = -9.0
 offset_top = 10.0
-offset_right = 9.0
+offset_right = 10.0
 offset_bottom = 15.0
 max_value = 2.0
 nine_patch_stretch = true
