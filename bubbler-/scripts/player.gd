@@ -3,21 +3,38 @@ extends CharacterBody2D
 
 const SPEED = 500.0
 
+var bullet_scene = preload("res://scenes/bullet.tscn")
+var bullets = []
+enum dir {right, left, up, down}
+var facing = dir.down
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Vector2.ZERO # stay in place
 	
+	if InputEventMouseButton:
+		var boba = bullet_scene.instantiate()
+		boba.position = $Gun.position
+		add_child(boba)
+		bullets.append(boba)
+		
 	
 	if Input.is_action_pressed("RIGHT"):
+		facing = dir.right
 		direction.x = SPEED
+		$Gun.position = Vector2(32,-32)
 	elif Input.is_action_pressed("LEFT"):
+		facing = dir.left
 		direction.x = -SPEED
+		$Gun.position = Vector2(-32,-32)
 	elif Input.is_action_pressed("DOWN"):
+		facing = dir.down
 		direction.y = SPEED
-		$Gun.position = (0,0)
+		$Gun.position = Vector2(0,0)
 	elif Input.is_action_pressed("UP"):
+		facing = dir.up
 		direction.y = -SPEED
+		$Gun.position = Vector2(0, -64)
 	
 	if direction.length() > 0:
 		direction = direction.normalized()
