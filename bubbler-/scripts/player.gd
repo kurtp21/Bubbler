@@ -7,6 +7,7 @@ const SPEED = 500.0
 func _ready() -> void:
 	$HealthBar.value = 5
 	$HealthBar.visible = true
+	input_pickable = true
 	print($HealthBar.value)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,4 +53,4 @@ func _physics_process(delta: float) -> void:
 	position.y = clamp(viewport.y, player_height, position.y)
 	
 func _die() -> void:
-	print("Player Died!")
+	queue_free()
