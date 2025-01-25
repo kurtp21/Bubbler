@@ -32,8 +32,9 @@ offset_top = 10.0
 offset_right = 9.0
 offset_bottom = 15.0
 max_value = 2.0
+nine_patch_stretch = true
 texture_progress = SubResource("CanvasTexture_igr1f")
-tint_progress = Color(0, 1, 1, 1)
+tint_progress = Color(0, 1, 0.0784314, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(8, 8)
