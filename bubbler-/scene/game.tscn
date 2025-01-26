@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpi7wf05i8ok6"]
+[gd_scene load_steps=9 format=3 uid="uid://dpi7wf05i8ok6"]
 
 [ext_resource type="PackedScene" uid="uid://ce7scyt8v1vf1" path="res://BaseMap.tscn" id="1_8xtiu"]
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_nuctj"]
 [ext_resource type="PackedScene" uid="uid://th46bmid4jwk" path="res://scenes/bubble.tscn" id="3_jb3nt"]
 [ext_resource type="PackedScene" uid="uid://bi7emox5p1lgs" path="res://scenes/barrier.tscn" id="4_1r4yh"]
 
@@ -14,6 +15,7 @@ size = Vector2(213.94, 6.46057)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g1wtd"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_nuctj")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_8xtiu")]
 scale = Vector2(2.60395, 1.38994)
@@ -107,3 +109,10 @@ text = "Host"
 [node name="Join" type="Button" parent="UI/Mulitplayer/VBoxContainer"]
 layout_mode = 2
 text = "Join"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scene/player.tscn")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="UI/Mulitplayer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/Mulitplayer/VBoxContainer/Join" to="." method="_on_join_pressed"]

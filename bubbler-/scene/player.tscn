@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bn6fbp7nygk5m"]
+[gd_scene load_steps=28 format=3 uid="uid://bn6fbp7nygk5m"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_beurf"]
 [ext_resource type="Texture2D" uid="uid://du3835ays7i3p" path="res://assets/sprites/boo (1).png" id="2_s3x5a"]
@@ -177,6 +177,11 @@ radius = 0.149036
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_3evib"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_shqix"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 31)
 input_pickable = true
@@ -211,6 +216,9 @@ position = Vector2(201, 54)
 
 [node name="Respawn" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_shqix")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
