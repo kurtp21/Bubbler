@@ -48,11 +48,15 @@ anchor_mode = 0
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(729.5, 399)
 scale = Vector2(8.76, 7.44)
 shape = SubResource("RectangleShape2D_6ltw3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+light_mask = 3
+visibility_layer = 3
 position = Vector2(925.5, 425)
 scale = Vector2(8.68, 7.12012)
 shape = SubResource("RectangleShape2D_lrlwj")

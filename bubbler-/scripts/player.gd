@@ -4,6 +4,7 @@ extends CharacterBody2D
 const SPEED = 500.0
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var game: Game = get_parent()
 
 var last_loc = Vector2.ZERO
 
@@ -67,18 +68,7 @@ func _physics_process(delta: float) -> void:
 
 	# Fire bullet only once per click
 	if Input.is_action_just_pressed("shoot"):
-		var boba = bullet_scene.instantiate()
-		boba.global_position = $Gun.global_position
-		if facing == dir.right:
-			boba.global_rotation = deg_to_rad(0)
-		elif facing == dir.left:
-			boba.rotation = deg_to_rad(180)
-		elif facing == dir.up:
-			boba.rotation = deg_to_rad(270)
-		elif facing == dir.down:  
-			boba.rotation = deg_to_rad(90)
-		get_parent().add_child(boba)
-		bullets.append(boba)
+		shoot.rpc(multiplayer.get_unique_id())
 
 	# Prevent player from moving out of bounds
 	var viewport = get_viewport_rect().size
@@ -103,7 +93,7 @@ func _respawn() -> void:
 	$HealthBar.value = 5
 	visible = true
 	
-
+@rpc("any_peer")
 func take_damage(amount):
 	$HealthBar.value -= amount
 	if $HealthBar.value <= 0:
@@ -114,3 +104,21 @@ func _on_respawn_timeout() -> void:
 	_respawn()
 	$Respawn.stop()
 	$Respawn.wait_time = 3
+
+@rpc("call_local")
+func shoot(shooter_pid):
+	var boba = bullet_scene.instantiate()
+	boba.set_multiplayer_authority(shooter_pid)
+	get_parent().add_child(boba)
+	#boba.transform = $Gun.global_transform
+	boba.global_position = $Gun.global_position
+	if facing == dir.right:
+		boba.global_rotation = deg_to_rad(0)
+	elif facing == dir.left:
+		boba.rotation = deg_to_rad(180)
+	elif facing == dir.up:
+		boba.rotation = deg_to_rad(270)
+	elif facing == dir.down:  
+		boba.rotation = deg_to_rad(90)
+	
+	bullets.append(boba)

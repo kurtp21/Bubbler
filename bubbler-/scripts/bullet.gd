@@ -24,8 +24,11 @@ func _on_body_entered(body):
 	
 	if body is Player:
 		body.take_damage.rpc_id(body.get_multiplayer_authority(), 1)
+		remove_bullet.rpc()
+	if body is WorldBoundaryShape2D:
+		remove_bullet.rpc()
+		print(1)
 	
-	remove_bullet.rpc()
 	
 
 @rpc("call_local")
