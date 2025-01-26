@@ -89,8 +89,7 @@ func _die() -> void:
 	print("In die function")
 	#last_loc = position
 	visible = false
-	await get_tree().create_timer(3.0).timeout
-	_respawn()
+	$Respawn.start()
 
 func _respawn() -> void:
 	print("Player respawned")
@@ -99,3 +98,7 @@ func _respawn() -> void:
 	visible = true
 	
 	
+
+
+func _on_respawn_timeout() -> void:
+	_respawn()
