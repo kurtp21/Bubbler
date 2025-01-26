@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://xvlieap0bbxc"]
+
+[ext_resource type="Script" path="res://new_game.gd" id="1_ctr0c"]
+[ext_resource type="Texture2D" uid="uid://cns3awn3st6p2" path="res://3.png" id="2_o1ke5"]
+
+[node name="New Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ctr0c")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 1.78186
+offset_right = 1600.0
+offset_bottom = 1036.78
+scale = Vector2(0.939269, 0.862309)
+texture = ExtResource("2_o1ke5")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 671.539
+offset_top = 473.185
+offset_right = 765.539
+offset_bottom = 539.185
+scale = Vector2(2.77071, 4.02541)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Host" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Host Game
+"
+
+[node name="Join" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Join Game"
+
+[node name="back" type="MarginContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 905.066
+offset_right = 844.0
+offset_bottom = 945.066
+scale = Vector2(1.18704, 1.35509)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TextureRect/back"]
+layout_mode = 2
+
+[node name="back" type="Button" parent="TextureRect/back"]
+layout_mode = 2
+text = "back to main"
+
+[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="TextureRect/back/back" to="." method="_on_back_pressed"]
