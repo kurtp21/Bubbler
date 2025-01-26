@@ -100,4 +100,5 @@ func _respawn() -> void:
 
 
 func _on_respawn_timeout() -> void:
+	$Respawn.stop()
 	_respawn()
