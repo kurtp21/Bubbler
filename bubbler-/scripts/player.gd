@@ -85,7 +85,7 @@ func _physics_process(delta: float) -> void:
 func _die() -> void:
 	print("In die function")
 	#last_loc = position
-	death_sound.play()
+	AudioControl.play_death()
 	visible = false
 	$Respawn.start()
 
