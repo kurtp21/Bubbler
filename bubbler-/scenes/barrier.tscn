@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bi7emox5p1lgs"]
 
 [ext_resource type="Script" path="res://scripts/barrier.gd" id="1_01744"]
-[ext_resource type="Texture2D" path="res://icon.svg" id="1_m1bmr"]
+[ext_resource type="Texture2D" uid="uid://cynnhjder6tam" path="res://assets/sprites/pearl.png" id="2_2both"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_485h7"]
 
@@ -23,8 +23,7 @@ shape = SubResource("RectangleShape2D_p0i2s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-8.04663e-07, -2.38419e-07)
-scale = Vector2(0.140625, 0.140625)
-texture = ExtResource("1_m1bmr")
+texture = ExtResource("2_2both")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 offset_left = -9.0

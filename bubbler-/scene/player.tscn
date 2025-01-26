@@ -178,13 +178,15 @@ radius = 0.149036
 [sub_resource type="CanvasTexture" id="CanvasTexture_3evib"]
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(0, 31)
+input_pickable = true
 script = ExtResource("1_beurf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -43)
 scale = Vector2(1.7, 1.17)
 sprite_frames = SubResource("SpriteFrames_6myak")
-animation = &"right_facing"
+animation = &"left_facing"
 autoplay = "down_facing"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -202,6 +204,15 @@ max_value = 5.0
 nine_patch_stretch = true
 texture_progress = SubResource("CanvasTexture_3evib")
 tint_progress = Color(0.0470588, 1, 0.121569, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Gun" type="Marker2D" parent="."]
+position = Vector2(201, 54)
+
+[node name="Respawn" type="Timer" parent="."]
+wait_time = 3.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
+[connection signal="timeout" from="Respawn" to="." method="_on_respawn_timeout"]
