@@ -39,6 +39,7 @@ position = Vector2(1184.8, 626.8)
 scale = Vector2(4.08, 4.08)
 
 [node name="Player" parent="." instance=ExtResource("1_jvn65")]
+visible = false
 position = Vector2(600, 232)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -122,13 +123,25 @@ text = "MP"
 layout_mode = 2
 text = "Host"
 
+[node name="CopyOID" type="Button" parent="UI/Multiplayer/VBoxContainer"]
+layout_mode = 2
+text = "Copy OID"
+
+[node name="OIDInput" type="LineEdit" parent="UI/Multiplayer/VBoxContainer"]
+layout_mode = 2
+text = "Host OID"
+
 [node name="Join" type="Button" parent="UI/Multiplayer/VBoxContainer"]
 layout_mode = 2
 text = "Join"
+
+[node name="OID" type="Label" parent="UI/Multiplayer/VBoxContainer"]
+layout_mode = 2
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scene/player.tscn")
 spawn_path = NodePath("..")
 
 [connection signal="pressed" from="UI/Multiplayer/VBoxContainer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/Multiplayer/VBoxContainer/CopyOID" to="." method="_on_copy_oid_pressed"]
 [connection signal="pressed" from="UI/Multiplayer/VBoxContainer/Join" to="." method="_on_join_pressed"]
