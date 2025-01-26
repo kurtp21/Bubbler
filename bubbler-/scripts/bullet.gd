@@ -8,7 +8,7 @@ enum bullet_type {normal, white, strawberry, egg} # bullet types
 const SPEED = 500
 
 func _ready() -> void:
-	pass # Replace with function body.
+	$Sprite2D.self_modulate.a = 1 # proof of opacity
 
 func _process(delta: float) -> void:
 	# Calculate movement vector based on rotation
