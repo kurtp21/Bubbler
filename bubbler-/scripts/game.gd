@@ -33,6 +33,7 @@ func add_player(pid):
 	var player = PLAYER.instantiate()
 	player.name = str(pid)
 	player.global_position = $Level.get_child(players.size()).global_position
+	player.last_loc = $Level.get_child(players.size()).global_position
 	players.append(player)
 	
 	return player

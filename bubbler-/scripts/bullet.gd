@@ -14,3 +14,9 @@ func _process(delta: float) -> void:
 	# Calculate movement vector based on rotation
 	var direction = Vector2(cos(rotation), sin(rotation))
 	position += direction * SPEED * delta
+
+
+
+
+func _on_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.

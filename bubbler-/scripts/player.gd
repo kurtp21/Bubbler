@@ -99,11 +99,16 @@ func _die() -> void:
 
 func _respawn() -> void:
 	print("Player respawned")
-	position = $"../Node2D/Player1_Spawner".global_position
+	position = last_loc # $"../Node2D/Player1_Spawner".global_position
 	$HealthBar.value = 5
 	visible = true
 	
 
+func take_damage(amount):
+	$HealthBar.value -= amount
+	if $HealthBar.value <= 0:
+		#_die(position)
+		_die()
 
 func _on_respawn_timeout() -> void:
 	_respawn()
