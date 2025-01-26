@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" path="res://BaseMap.tscn" id="1_8xtiu"]
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w22y8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ltw3"]
+size = Vector2(10.6164, 108.602)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_drb02"]
-normal = Vector2(0, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrlwj"]
+size = Vector2(213.94, 6.46057)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v16bx"]
-normal = Vector2(-0.999992, 0.00402583)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g1wtd"]
 
 [node name="Game" type="Node2D"]
 
@@ -32,16 +32,34 @@ anchor_mode = 0
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(726, 415)
+position = Vector2(729.5, 399)
 scale = Vector2(8.76, 7.44)
-shape = SubResource("WorldBoundaryShape2D_w22y8")
+shape = SubResource("RectangleShape2D_6ltw3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(724, -11)
+position = Vector2(925.5, 425)
 scale = Vector2(8.68, 7.12012)
-shape = SubResource("WorldBoundaryShape2D_drb02")
+shape = SubResource("RectangleShape2D_lrlwj")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(690, 425)
-scale = Vector2(5.32, 6.88272)
-shape = SubResource("WorldBoundaryShape2D_v16bx")
+position = Vector2(752, -6.00001)
+rotation = 3.14159
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_g1wtd")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-8, 392)
+rotation = 1.5708
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_g1wtd")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1506, 692)
+rotation = 4.71239
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_g1wtd")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(698, 802)
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_g1wtd")

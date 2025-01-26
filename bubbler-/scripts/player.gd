@@ -94,7 +94,7 @@ func _die() -> void:
 
 func _respawn() -> void:
 	print("Player respawned")
-	position = $"../Player1_Spawner".global_position
+	position = $"../Node2D/Player1_Spawner".global_position
 	$HealthBar.value = 5
 	visible = true
 	
