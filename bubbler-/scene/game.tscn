@@ -1,7 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpi7wf05i8ok6"]
+[gd_scene load_steps=8 format=3 uid="uid://dpi7wf05i8ok6"]
 
-[ext_resource type="PackedScene" uid="uid://ce7scyt8v1vf1" path="res://BaseMap.tscn" id="1_8xtiu"]
+[ext_resource type="PackedScene" path="res://BaseMap.tscn" id="1_8xtiu"]
+[ext_resource type="Script" path="res://scene/game.gd" id="1_cfp8o"]
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3vx1k"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w22y8"]
 
@@ -12,6 +18,8 @@ normal = Vector2(0, 1)
 normal = Vector2(-0.999992, 0.00402583)
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_cfp8o")
+player_scene = ExtResource("1_jvn65")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_8xtiu")]
 scale = Vector2(2.60395, 1.38994)
@@ -24,6 +32,9 @@ scale = Vector2(4.08, 4.08)
 
 [node name="Player" parent="." instance=ExtResource("1_jvn65")]
 position = Vector2(1235, 232)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Player"]
+replication_config = SubResource("SceneReplicationConfig_3vx1k")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.957848, -7.38621)
@@ -45,3 +56,24 @@ shape = SubResource("WorldBoundaryShape2D_drb02")
 position = Vector2(690, 425)
 scale = Vector2(5.32, 6.88272)
 shape = SubResource("WorldBoundaryShape2D_v16bx")
+
+[node name="host" type="Button" parent="."]
+offset_left = 30.0
+offset_top = 597.0
+offset_right = 181.0
+offset_bottom = 663.0
+text = "host game"
+
+[node name="join" type="Button" parent="."]
+offset_left = 31.0
+offset_top = 692.0
+offset_right = 181.0
+offset_bottom = 759.0
+text = "Join game"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scene/player.tscn")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="join" to="." method="_on_join_pressed"]

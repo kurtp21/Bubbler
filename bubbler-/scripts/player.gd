@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+#func _enter_tree():
+	#set_multiplayer_authority(name.to_int())
+
 const SPEED = 500.0
 
 @onready var animated_sprite = $AnimatedSprite2D
@@ -63,7 +66,7 @@ func _die() -> void:
 
 func _respawn() -> void:
 	print("Player respawned")
-	position = $"../Player1_Spawner".global_position
+	position = $"../Node2D/Player1_Spawner".global_position
 	$HealthBar.value = 5
 	visible = true
 	
