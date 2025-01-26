@@ -5,6 +5,7 @@ const SPEED = 500.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var game: Game = get_parent()
+@onready var death_sound: AudioStreamPlayer2D = $Death_Sound
 
 var last_loc = Vector2.ZERO
 
@@ -84,10 +85,11 @@ func _physics_process(delta: float) -> void:
 func _die() -> void:
 	print("In die function")
 	#last_loc = position
+	death_sound.play()
 	visible = false
 	$Respawn.start()
 
-func _respawn() -> void:
+func _respawn()-> void:
 	print("Player respawned")
 	position = last_loc # $"../Node2D/Player1_Spawner".global_position
 	$HealthBar.value = 5
