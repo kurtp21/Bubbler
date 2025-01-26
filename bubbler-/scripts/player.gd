@@ -5,6 +5,7 @@ const SPEED = 500.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var game: Game = get_parent()
+@onready var death_sound: AudioStreamPlayer2D = $Death_Sound
 
 var last_loc = Vector2.ZERO
 
@@ -36,8 +37,8 @@ func _on_mouse_entered() -> void: #SPECIFICALLY FOR TESTING
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority():
 		return
+
 	var direction = Vector2.ZERO # stay in place
-	
 	
 	if Input.is_action_pressed("RIGHT"):
 		facing = dir.right
@@ -84,10 +85,11 @@ func _physics_process(delta: float) -> void:
 func _die() -> void:
 	print("In die function")
 	#last_loc = position
+	death_sound.play()
 	visible = false
 	$Respawn.start()
 
-func _respawn() -> void:
+func _respawn()-> void:
 	print("Player respawned")
 	position = last_loc # $"../Node2D/Player1_Spawner".global_position
 	$HealthBar.value = 5
@@ -109,22 +111,102 @@ func _on_respawn_timeout() -> void:
 func shoot(shooter_pid):
 	var boba = bullet_scene.instantiate()
 	boba.set_multiplayer_authority(shooter_pid)
-	get_parent().add_child(boba)
 
-	boba.position = $Gun.global_position
+	get_parent().add_child(boba)#
+	print(get_parent())
+	#boba.transform = $Gun.global_transform
+	boba.global_position = $Gun.global_position
+	print(str(facing))
 
-	match facing:
-		dir.right:
-			boba.rotation = deg_to_rad(0)
-			boba.direction = Vector2.RIGHT
-		dir.left:
-			boba.rotation = deg_to_rad(180)
-			boba.direction = Vector2.LEFT
-		dir.up:
-			boba.rotation = deg_to_rad(270)
-			boba.direction = Vector2.UP
-		dir.down:
-			boba.rotation = deg_to_rad(90)
-			boba.direction = Vector2.DOWN
+	if facing == dir.right:
+		boba.global_rotation = deg_to_rad(0)
+	elif facing == dir.left:
+		boba.rotation = deg_to_rad(180)
+	elif facing == dir.up:
+		boba.rotation = deg_to_rad(270)
+	elif facing == dir.down:  
+		boba.rotation = deg_to_rad(90)
+	
 
 	bullets.append(boba)
+
+#class_name Player
+#extends CharacterBody2D
+#
+#const SPEED = 500.0
+#
+#@onready var animated_sprite = $AnimatedSprite2D
+#@onready var game: Game = get_parent()
+#
+#var last_loc = Vector2.ZERO
+#var bullet_scene = preload("res://scenes/bullet.tscn")
+#var bullets = []
+#enum dir {right, left, up, down}
+#var facing = dir.down
+#
+#func _enter_tree():
+	#set_multiplayer_authority(int(str(name)))
+#
+#func _ready() -> void:
+	#$HealthBar.value = 5
+	#$HealthBar.visible = true
+	#input_pickable = true
+#
+#@rpc("any_peer")
+#func shoot(shooter_pid):
+	#var boba = bullet_scene.instantiate()
+	#boba.set_multiplayer_authority(shooter_pid)
+	#get_parent().add_child(boba)
+	#boba.global_position = $Gun.global_position
+	#match facing:
+		#dir.right: boba.global_rotation = deg_to_rad(0)
+		#dir.left: boba.rotation = deg_to_rad(180)
+		#dir.up: boba.rotation = deg_to_rad(270)
+		#dir.down: boba.rotation = deg_to_rad(90)
+	#bullets.append(boba)
+#
+#func _physics_process(delta: float) -> void:
+	#if !visible:
+		#return  # Skip all actions if player is not visible
+	#if !is_multiplayer_authority():
+		#return
+#
+	#var direction = Vector2.ZERO
+	#if Input.is_action_pressed("RIGHT"):
+		#facing = dir.right
+		#direction.x = SPEED * delta
+		#$Gun.position = Vector2(35, -32)
+		#animated_sprite.play("right_facing")
+	#elif Input.is_action_pressed("LEFT"):
+		#facing = dir.left
+		#direction.x = -SPEED * delta
+		#$Gun.position = Vector2(-35, -32)
+		#animated_sprite.play("left_facing")
+	#elif Input.is_action_pressed("DOWN"):
+		#facing = dir.down
+		#direction.y = SPEED * delta
+		#$Gun.position = Vector2(0, 10)
+		#animated_sprite.play("down_facing")
+	#elif Input.is_action_pressed("UP"):
+		#facing = dir.up
+		#direction.y = -SPEED * delta
+		#$Gun.position = Vector2(0, -69)
+		#animated_sprite.play("up_facing")
+	#
+	#if direction.length() > 0:
+		#direction = direction.normalized()
+	#
+	#velocity = direction * SPEED
+	#move_and_slide()
+	#
+	#if Input.is_action_just_pressed("shoot"):
+		#shoot.rpc(multiplayer.get_unique_id())
+#
+#func _die() -> void:
+	#visible = false
+	#$Respawn.start()
+#
+#func _on_respawn_timeout() -> void:
+	#visible = true
+	#$HealthBar.value = 5
+	#$Respawn.stop()

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpi7wf05i8ok6"]
+[gd_scene load_steps=11 format=3 uid="uid://dpi7wf05i8ok6"]
 
-[ext_resource type="PackedScene" uid="uid://ce7scyt8v1vf1" path="res://BaseMap.tscn" id="1_8xtiu"]
+[ext_resource type="PackedScene" path="res://BaseMap.tscn" id="1_8xtiu"]
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_nuctj"]
 [ext_resource type="PackedScene" uid="uid://th46bmid4jwk" path="res://scenes/bubble.tscn" id="3_jb3nt"]
 [ext_resource type="PackedScene" uid="uid://bi7emox5p1lgs" path="res://scenes/barrier.tscn" id="4_1r4yh"]
+[ext_resource type="AudioStream" uid="uid://bxjm6vovfhiah" path="res://game-over-retro-arcade-epic-stock-media-1-00-02.mp3" id="4_hqjpk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ltw3"]
 size = Vector2(10.6164, 108.602)
@@ -42,6 +43,9 @@ scale = Vector2(4.08, 4.08)
 
 [node name="Player" parent="." instance=ExtResource("1_jvn65")]
 position = Vector2(600, 232)
+
+[node name="Death_Sound" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("4_hqjpk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.957848, -7.38621)

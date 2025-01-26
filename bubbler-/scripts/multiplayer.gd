@@ -29,6 +29,7 @@ func host():
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(Noray.local_port)
 	multiplayer.multiplayer_peer = peer
+	
 	is_host = true
 
 func join(oid):
