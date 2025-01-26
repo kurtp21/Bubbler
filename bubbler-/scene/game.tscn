@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dpi7wf05i8ok6"]
+[gd_scene load_steps=10 format=3 uid="uid://dpi7wf05i8ok6"]
 
-[ext_resource type="PackedScene" path="res://BaseMap.tscn" id="1_8xtiu"]
+[ext_resource type="PackedScene" uid="uid://ce7scyt8v1vf1" path="res://BaseMap.tscn" id="1_8xtiu"]
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_nuctj"]
 [ext_resource type="PackedScene" uid="uid://th46bmid4jwk" path="res://scenes/bubble.tscn" id="3_jb3nt"]
-[ext_resource type="PackedScene" uid="uid://bi7emox5p1lgs" path="res://scenes/barrier.tscn" id="4_1r4yh"]
 [ext_resource type="AudioStream" uid="uid://bxjm6vovfhiah" path="res://game-over-retro-arcade-epic-stock-media-1-00-02.mp3" id="4_hqjpk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ltw3"]
@@ -92,10 +91,16 @@ scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_g1wtd")
 
 [node name="Bubble" parent="." instance=ExtResource("3_jb3nt")]
-position = Vector2(401, 183)
+position = Vector2(144, 78)
 
-[node name="Barrier" parent="." instance=ExtResource("4_1r4yh")]
-position = Vector2(497, 283)
+[node name="Bubble2" parent="." instance=ExtResource("3_jb3nt")]
+position = Vector2(1353, 75)
+
+[node name="Bubble3" parent="." instance=ExtResource("3_jb3nt")]
+position = Vector2(161, 692)
+
+[node name="Bubble4" parent="." instance=ExtResource("3_jb3nt")]
+position = Vector2(1347, 685)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
