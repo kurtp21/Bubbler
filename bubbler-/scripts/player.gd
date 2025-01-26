@@ -109,17 +109,22 @@ func _on_respawn_timeout() -> void:
 func shoot(shooter_pid):
 	var boba = bullet_scene.instantiate()
 	boba.set_multiplayer_authority(shooter_pid)
-	get_parent().add_child(boba)#
-	print(get_parent())
-	#boba.transform = $Gun.global_transform
-	boba.global_position = $Gun.global_position
-	if facing == dir.right:
-		boba.global_rotation = deg_to_rad(0)
-	elif facing == dir.left:
-		boba.rotation = deg_to_rad(180)
-	elif facing == dir.up:
-		boba.rotation = deg_to_rad(270)
-	elif facing == dir.down:  
-		boba.rotation = deg_to_rad(90)
-	
+	get_parent().add_child(boba)
+
+	boba.position = $Gun.global_position
+
+	match facing:
+		dir.right:
+			boba.rotation = deg_to_rad(0)
+			boba.direction = Vector2.RIGHT
+		dir.left:
+			boba.rotation = deg_to_rad(180)
+			boba.direction = Vector2.LEFT
+		dir.up:
+			boba.rotation = deg_to_rad(270)
+			boba.direction = Vector2.UP
+		dir.down:
+			boba.rotation = deg_to_rad(90)
+			boba.direction = Vector2.DOWN
+
 	bullets.append(boba)

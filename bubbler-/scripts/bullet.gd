@@ -11,6 +11,7 @@ const SPEED = 500
 
 func _ready() -> void:
 	$Sprite2D.self_modulate.a = 1 # proof of opacity
+	#position = pos#get_parent().players[0].position
 
 func _process(delta: float) -> void:
 	pos = position
