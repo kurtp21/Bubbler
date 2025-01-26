@@ -4,11 +4,12 @@ const SPEED = 500.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 
+var last_loc = Vector2.ZERO
+
 func _ready() -> void:
 	$HealthBar.value = 5
 	$HealthBar.visible = true
 	input_pickable = true
-	print($HealthBar.value)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,6 +24,7 @@ func _on_mouse_entered() -> void: #SPECIFICALLY FOR TESTING
 	$HealthBar.value -= 1
 	
 	if $HealthBar.value <= 0:
+		#_die(position)
 		_die()
 
 
@@ -84,4 +86,16 @@ func _physics_process(delta: float) -> void:
 	#_on_mouse_entered()
 	
 func _die() -> void:
-	queue_free()
+	print("In die function")
+	#last_loc = position
+	visible = false
+	await get_tree().create_timer(3.0).timeout
+	_respawn()
+
+func _respawn() -> void:
+	print("Player respawned")
+	position = $"../Player1_Spawner".global_position
+	$HealthBar.value = 5
+	visible = true
+	
+	

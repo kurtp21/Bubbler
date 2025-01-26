@@ -1,18 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpi7wf05i8ok6"]
+[gd_scene load_steps=6 format=3 uid="uid://dpi7wf05i8ok6"]
 
 [ext_resource type="PackedScene" path="res://BaseMap.tscn" id="1_8xtiu"]
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w22y8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_drb02"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_v16bx"]
+normal = Vector2(-0.999992, 0.00402583)
+
 [node name="Game" type="Node2D"]
-position = Vector2(0, -1)
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_8xtiu")]
 scale = Vector2(2.60395, 1.38994)
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Player1_Spawner" type="Marker2D" parent="Node2D"]
+position = Vector2(267, 217)
+scale = Vector2(4.08, 4.08)
+
 [node name="Player" parent="." instance=ExtResource("1_jvn65")]
-position = Vector2(119, 170)
+position = Vector2(1235, 232)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-2, 0)
 scale = Vector2(0.957848, -7.38621)
 anchor_mode = 0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(726, 415)
+scale = Vector2(8.76, 7.44)
+shape = SubResource("WorldBoundaryShape2D_w22y8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(724, -11)
+scale = Vector2(8.68, 7.12012)
+shape = SubResource("WorldBoundaryShape2D_drb02")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(690, 425)
+scale = Vector2(5.32, 6.88272)
+shape = SubResource("WorldBoundaryShape2D_v16bx")
