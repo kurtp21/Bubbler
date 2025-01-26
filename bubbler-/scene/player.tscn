@@ -206,6 +206,9 @@ texture_progress = SubResource("CanvasTexture_3evib")
 tint_progress = Color(0.0470588, 1, 0.121569, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="Gun" type="Marker2D" parent="."]
+position = Vector2(201, 54)
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
