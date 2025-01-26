@@ -4,7 +4,7 @@ extends Control
 
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene/new_game.tscn")
+	get_tree().change_scene_to_file("res://scene/game.tscn")
 	
 	
 func _on_how_to_pressed() -> void:
