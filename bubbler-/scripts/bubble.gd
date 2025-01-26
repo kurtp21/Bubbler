@@ -8,7 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if $HealthBar.value <= 0:
+		queue_free()
 
 
 func _on_mouse_entered() -> void: #SPECIFICALLY FOR TESTING

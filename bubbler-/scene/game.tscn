@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpi7wf05i8ok6"]
+[gd_scene load_steps=8 format=3 uid="uid://dpi7wf05i8ok6"]
 
 [ext_resource type="PackedScene" path="res://BaseMap.tscn" id="1_8xtiu"]
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
+[ext_resource type="PackedScene" uid="uid://th46bmid4jwk" path="res://scenes/bubble.tscn" id="3_jb3nt"]
+[ext_resource type="PackedScene" uid="uid://bi7emox5p1lgs" path="res://scenes/barrier.tscn" id="4_1r4yh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ltw3"]
 size = Vector2(10.6164, 108.602)
@@ -23,7 +25,7 @@ position = Vector2(267, 217)
 scale = Vector2(4.08, 4.08)
 
 [node name="Player" parent="." instance=ExtResource("1_jvn65")]
-position = Vector2(1235, 232)
+position = Vector2(600, 232)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.957848, -7.38621)
@@ -63,3 +65,9 @@ shape = SubResource("WorldBoundaryShape2D_g1wtd")
 position = Vector2(698, 802)
 scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_g1wtd")
+
+[node name="Bubble" parent="StaticBody2D" instance=ExtResource("3_jb3nt")]
+position = Vector2(401, 183)
+
+[node name="Barrier" parent="StaticBody2D" instance=ExtResource("4_1r4yh")]
+position = Vector2(497, 283)
