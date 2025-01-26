@@ -7,6 +7,7 @@ const PLAYER = preload("res://scene/player.tscn")
 
 var peer = ENetMultiplayerPeer.new()
 var players: Array[Player] = []
+var bullets: Array[bullet] = []
 
 func _ready():
 	$MultiplayerSpawner.spawn_function = add_player

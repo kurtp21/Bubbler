@@ -41,22 +41,22 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("RIGHT"):
 		facing = dir.right
 		direction.x = SPEED*delta
-		$Gun.position = Vector2(32,-32)
+		$Gun.position = Vector2(35,-32)
 		animated_sprite.play("right_facing")
 	elif Input.is_action_pressed("LEFT"):
 		facing = dir.left
 		direction.x = -SPEED*delta
-		$Gun.position = Vector2(-32,-32)
+		$Gun.position = Vector2(-35,-32)
 		animated_sprite.play("left_facing")
 	elif Input.is_action_pressed("DOWN"):
 		facing = dir.down
 		direction.y = SPEED*delta
-		$Gun.position = Vector2(0,0)
+		$Gun.position = Vector2(0,10)
 		animated_sprite.play("down_facing")
 	elif Input.is_action_pressed("UP"):
 		facing = dir.up
 		direction.y = -SPEED*delta
-		$Gun.position = Vector2(0, -64)
+		$Gun.position = Vector2(0, -69)
 		animated_sprite.play("up_facing")
 	
 	if direction.length() > 0:

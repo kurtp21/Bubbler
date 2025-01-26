@@ -18,5 +18,16 @@ func _process(delta: float) -> void:
 
 
 
-func _on_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+func _on_body_entered(body):
+	if !is_multiplayer_authority():
+		return
+	
+	if body is Player:
+		body.take_damage.rpc_id(body.get_multiplayer_authority(), 1)
+	
+	remove_bullet.rpc()
+	
+
+@rpc("call_local")
+func remove_bullet():
+	queue_free()
