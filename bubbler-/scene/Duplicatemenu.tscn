@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://c41ogucla2akt"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_lxd4d"]
+[ext_resource type="Texture2D" uid="uid://dpcmfwa8v262f" path="res://1.png" id="2_38u52"]
+
+[sub_resource type="Theme" id="Theme_2lk16"]
+default_base_scale = 0.08
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lxd4d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00118799
+anchor_top = 0.00395955
+anchor_right = 1.06785
+anchor_bottom = 1.15396
+scale = Vector2(0.935229, 0.865497)
+texture = ExtResource("2_38u52")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 951.48
+offset_top = 440.104
+offset_right = 1017.48
+offset_bottom = 623.104
+scale = Vector2(3.26101, 2.90095)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.35
+theme_override_constants/separation = 15
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_2lk16")
+text = "Start"
+
+[node name="How To" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "How To"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/How To" to="." method="_on_how_to_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

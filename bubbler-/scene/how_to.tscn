@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://biqyn8mgs4juv"]
+
+[ext_resource type="Texture2D" uid="uid://bpkibw00ijdvp" path="res://2.png" id="1_5vwbd"]
+[ext_resource type="Script" path="res://scene/how_to.gd" id="1_8vfrp"]
+
+[node name="How To" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8vfrp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.936829, 0.866397)
+texture = ExtResource("1_5vwbd")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 700.235
+offset_top = 835.645
+offset_right = 808.235
+offset_bottom = 875.645
+scale = Vector2(1.79922, 1.90476)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to Main"
+
+[connection signal="pressed" from="TextureRect/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
