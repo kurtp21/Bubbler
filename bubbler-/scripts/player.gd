@@ -97,7 +97,6 @@ func _respawn() -> void:
 	$HealthBar.value = 5
 	visible = true
 	
-	
 
 
 func _on_respawn_timeout() -> void:
