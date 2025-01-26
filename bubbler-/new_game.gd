@@ -1,9 +1,5 @@
 extends Control
 
-
-
-
-
 func _on_host_pressed() -> void:
 	print("New Host")
 	

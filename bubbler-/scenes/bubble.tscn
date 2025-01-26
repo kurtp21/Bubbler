@@ -1,7 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://th46bmid4jwk"]
+[gd_scene load_steps=11 format=3 uid="uid://th46bmid4jwk"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_g0rt6"]
-[ext_resource type="Texture2D" uid="uid://cynnhjder6tam" path="res://assets/sprites/pearl.png" id="2_yc343"]
+[ext_resource type="Texture2D" uid="uid://co23u1snoxj2p" path="res://assets/sprites/Boo_bubble.png" id="2_d8ifb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0687t"]
+atlas = ExtResource("2_d8ifb")
+region = Rect2(0, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h132y"]
+atlas = ExtResource("2_d8ifb")
+region = Rect2(130, 0, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4c68s"]
+atlas = ExtResource("2_d8ifb")
+region = Rect2(0, 32, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6j42r"]
+atlas = ExtResource("2_d8ifb")
+region = Rect2(104, 96, 26, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ftxo4"]
+atlas = ExtResource("2_d8ifb")
+region = Rect2(104, 128, 26, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hm5p8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0687t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h132y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4c68s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6j42r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ftxo4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e1h0l"]
 
@@ -10,21 +53,27 @@
 [node name="Bubble" type="Area2D"]
 script = ExtResource("1_g0rt6")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.99999, 5.00001)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_hm5p8")
+autoplay = "default"
+frame_progress = 0.338226
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.54747e-13, 1.19209e-07)
+scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_e1h0l")
 
 [node name="HealthBar" type="TextureProgressBar" parent="."]
 offset_left = -39.0
-offset_top = 10.0
+offset_top = 81.0
 offset_right = 40.0
-offset_bottom = 22.0
+offset_bottom = 93.0
 max_value = 5.0
 nine_patch_stretch = true
 texture_progress = SubResource("CanvasTexture_g232t")
 tint_progress = Color(0.184314, 1, 1, 1)
 metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_yc343")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
