@@ -6,10 +6,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5wdi"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0surp"]
-properties/0/path = NodePath(".:pos")
+properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath(".:direction")
+properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 

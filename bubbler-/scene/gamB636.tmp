@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dpi7wf05i8ok6"]
+[gd_scene load_steps=9 format=3 uid="uid://dpi7wf05i8ok6"]
 
 [ext_resource type="PackedScene" uid="uid://ce7scyt8v1vf1" path="res://BaseMap.tscn" id="1_8xtiu"]
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
@@ -13,8 +13,6 @@ size = Vector2(10.6164, 108.602)
 size = Vector2(213.94, 6.46057)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g1wtd"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vmg5e"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_nuctj")
@@ -143,9 +141,6 @@ layout_mode = 2
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scene/player.tscn")
 spawn_path = NodePath("..")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_vmg5e")
 
 [connection signal="pressed" from="UI/Multiplayer/VBoxContainer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="UI/Multiplayer/VBoxContainer/CopyOID" to="." method="_on_copy_oid_pressed"]

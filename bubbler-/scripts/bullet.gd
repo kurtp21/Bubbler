@@ -2,6 +2,8 @@ extends Area2D
 class_name bullet
 
 enum bullet_type {normal, white, strawberry, egg} # bullet types
+@export var pos = global_position
+@export var direction = global_position
 
 # Called when the node enters the scene tree for the first time.
 
@@ -11,8 +13,9 @@ func _ready() -> void:
 	$Sprite2D.self_modulate.a = 1 # proof of opacity
 
 func _process(delta: float) -> void:
+	pos = position
 	# Calculate movement vector based on rotation
-	var direction = Vector2(cos(rotation), sin(rotation))
+	direction = Vector2(cos(rotation), sin(rotation))
 	position += direction * SPEED * delta
 
 
