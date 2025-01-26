@@ -101,3 +101,5 @@ func _respawn() -> void:
 
 func _on_respawn_timeout() -> void:
 	_respawn()
+	$Respawn.stop()
+	$Respawn.wait_time = 3
