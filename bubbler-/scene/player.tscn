@@ -186,6 +186,7 @@ scale = Vector2(1.7, 1.17)
 sprite_frames = SubResource("SpriteFrames_6myak")
 animation = &"right_facing"
 autoplay = "down_facing"
+frame_progress = 0.422559
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, -31)

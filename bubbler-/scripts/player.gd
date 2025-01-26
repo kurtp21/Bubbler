@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-#func _enter_tree():
-	#set_multiplayer_authority(name.to_int())
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
 
 const SPEED = 500.0
 
@@ -26,26 +26,29 @@ func _on_mouse_entered() -> void: #SPECIFICALLY FOR TESTING
 		_die()
 
 func _physics_process(delta: float) -> void:
-	var direction = Vector2.ZERO # stay in place
+	if is_multiplayer_authority():
+		var direction = Vector2.ZERO
+		
+		
+	#var direction = Vector2.ZERO # stay in place
 	
 	# Apply movement
-	if Input.is_action_pressed("RIGHT"):
-		animated_sprite.play("right_facing")
-		direction.x = SPEED
-	elif Input.is_action_pressed("LEFT"):
-		animated_sprite.play("left_facing")
-		direction.x = -SPEED
-	elif Input.is_action_pressed("DOWN"):
-		animated_sprite.play("down_facing")
-		direction.y = SPEED
-	elif Input.is_action_pressed("UP"):
-		animated_sprite.play("up_facing")
-		direction.y = -SPEED
+		if Input.is_action_pressed("RIGHT"):
+			animated_sprite.play("right_facing")
+			direction.x = SPEED
+		elif Input.is_action_pressed("LEFT"):
+			animated_sprite.play("left_facing")
+			direction.x = -SPEED
+		elif Input.is_action_pressed("DOWN"):
+			animated_sprite.play("down_facing")
+			direction.y = SPEED
+		elif Input.is_action_pressed("UP"):
+			animated_sprite.play("up_facing")
+			direction.y = -SPEED
 	
-	if direction.length() > 0:
-		direction = direction.normalized()
-		
-	velocity = direction * SPEED
+		if direction.length() > 0:
+			direction = direction.normalized()
+			velocity = direction * SPEED
 	move_and_slide()
 	
 	# Prevent from moing out of bounds

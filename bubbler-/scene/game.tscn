@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3vx1k"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath(".:scale")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
