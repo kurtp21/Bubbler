@@ -6,6 +6,9 @@ const SPEED = 500.0
 
 var last_loc = Vector2.ZERO
 
+func _enter_tree():
+	set_multiplayer_authority(int(str(name)))
+
 func _ready() -> void:
 	$HealthBar.value = 5
 	$HealthBar.visible = true
@@ -29,6 +32,8 @@ func _on_mouse_entered() -> void: #SPECIFICALLY FOR TESTING
 
 
 func _physics_process(delta: float) -> void:
+	if !is_multiplayer_authority():
+		return
 	var direction = Vector2.ZERO # stay in place
 	
 	

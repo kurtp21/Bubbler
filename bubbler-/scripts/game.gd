@@ -17,12 +17,12 @@ func _on_host_pressed():
 	)
 	
 	add_player(multiplayer.get_unique_id())
-	#multiplayer_ui.hide()
+	multiplayer_ui.hide()
 
 func _on_join_pressed():
 	peer.create_client("localhost", 25565)
 	multiplayer.multiplayer_peer = peer
-	#multiplayer_ui.hide()
+	multiplayer_ui.hide()
 
 func add_player(pid):
 	var player = PLAYER.instantiate()
