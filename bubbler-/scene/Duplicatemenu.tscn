@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c41ogucla2akt"]
+[gd_scene load_steps=4 format=3 uid="uid://cews4c5l6cupq"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_lxd4d"]
-[ext_resource type="Texture2D" uid="uid://uflbcqqfw8ed" path="res://assets/1.png" id="2_38u52"]
+[ext_resource type="Texture2D" uid="uid://uflbcqqfw8ed" path="res://scene/1.png" id="2_38u52"]
 
 [sub_resource type="Theme" id="Theme_2lk16"]
 default_base_scale = 0.08
