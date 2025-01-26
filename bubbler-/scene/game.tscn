@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpi7wf05i8ok6"]
+[gd_scene load_steps=7 format=3 uid="uid://dpi7wf05i8ok6"]
 
 [ext_resource type="PackedScene" uid="uid://ce7scyt8v1vf1" path="res://BaseMap.tscn" id="1_8xtiu"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_jkgof"]
 [ext_resource type="PackedScene" uid="uid://bn6fbp7nygk5m" path="res://scene/player.tscn" id="1_jvn65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ltw3"]
@@ -12,6 +13,10 @@ size = Vector2(213.94, 6.46057)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g1wtd"]
 
 [node name="Game" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_jkgof")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_8xtiu")]
 scale = Vector2(2.60395, 1.38994)
@@ -63,3 +68,44 @@ shape = SubResource("WorldBoundaryShape2D_g1wtd")
 position = Vector2(698, 802)
 scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_g1wtd")
+
+[node name="Multiplayer_HUB" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 60.0
+
+[node name="Panel" type="Panel" parent="Multiplayer_HUB"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Multiplayer_HUB/Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Host" type="Button" parent="Multiplayer_HUB/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Host New Game"
+
+[node name="Join" type="Button" parent="Multiplayer_HUB/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Join as Player 2"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://scene/multiplayer_player.tscn")
+spawn_path = NodePath("../Players")
+spawn_limit = 4
+
+[node name="Players" type="Node2D" parent="."]
+
+[connection signal="pressed" from="Multiplayer_HUB/Panel/VBoxContainer/Host" to="GameManager" method="_become_host"]
+[connection signal="pressed" from="Multiplayer_HUB/Panel/VBoxContainer/Join" to="GameManager" method="_join_as_player_2"]
+[connection signal="pressed" from="Multiplayer_HUB/Panel/VBoxContainer/Join" to="GameManager" method="_join_asplayer_2"]

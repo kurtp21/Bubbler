@@ -4,14 +4,12 @@ const SPEED = 500.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 
-var last_loc = Vector2.ZERO
+var direction = Vector2.ZERO
 
-func _ready() -> void:
-	$HealthBar.value = 5
-	$HealthBar.visible = true
-	input_pickable = true
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+@export var player_id := 1:
+	set(id):
+		player_id = id
+
 func _process(delta: float) -> void:
 	pass
 
@@ -20,16 +18,14 @@ var bullets = []
 enum dir {right, left, up, down}
 var facing = dir.down
 
-func _on_mouse_entered() -> void: #SPECIFICALLY FOR TESTING
-	$HealthBar.value -= 1
-	
-	if $HealthBar.value <= 0:
-		#_die(position)
-		_die()
+func _apply_animation(delta):
+	pass
+
+func _apply_movement_from_input(delta):
+	pass
 
 func _physics_process(delta: float) -> void:
-	var direction = Vector2.ZERO # stay in place
-	
+	#var direction = Vector2.ZERO # stay in place
 	
 	if Input.is_action_pressed("RIGHT"):
 		facing = dir.right
@@ -83,21 +79,3 @@ func _physics_process(delta: float) -> void:
 	position.y = clamp(viewport.y, player_height, position.y)
 	
 	#_on_mouse_entered()
-	
-func _die() -> void:
-	print("In die function")
-	#last_loc = position
-	visible = false
-	$Respawn.start()
-
-func _respawn() -> void:
-	print("Player respawned")
-	position = $"../Node2D/Player1_Spawner".global_position
-	$HealthBar.value = 5
-	visible = true
-	
-
-
-func _on_respawn_timeout() -> void:
-	$Respawn.stop()
-	_respawn()
