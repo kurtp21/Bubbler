@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvm4qrqrgr2m3"]
+
+[ext_resource type="Script" path="res://Audio/audio_control.gd" id="1_8gxnv"]
+[ext_resource type="AudioStream" uid="uid://cg5ycg0asrtxd" path="res://Audio/boba1.mp3" id="1_51yw5"]
+[ext_resource type="AudioStream" uid="uid://dj5g2en1low7s" path="res://Audio/game-over-retro-arcade-epic-stock-media-1-00-02.mp3" id="2_k0aoc"]
+
+[node name="Audio" type="Node2D"]
+script = ExtResource("1_8gxnv")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_51yw5")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_k0aoc")
+volume_db = -6.764
