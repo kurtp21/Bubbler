@@ -20,10 +20,22 @@ script = ExtResource("1_nuctj")
 [node name="TileMapLayer" parent="." instance=ExtResource("1_8xtiu")]
 scale = Vector2(2.60395, 1.38994)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Level" type="Node2D" parent="."]
 
-[node name="Player1_Spawner" type="Marker2D" parent="Node2D"]
+[node name="Player1_Spawner" type="Marker2D" parent="Level"]
 position = Vector2(267, 217)
+scale = Vector2(4.08, 4.08)
+
+[node name="Player2_Spawner" type="Marker2D" parent="Level"]
+position = Vector2(1145, 219)
+scale = Vector2(4.08, 4.08)
+
+[node name="Player3_Spawner" type="Marker2D" parent="Level"]
+position = Vector2(306.8, 624.8)
+scale = Vector2(4.08, 4.08)
+
+[node name="Player4_Spawner" type="Marker2D" parent="Level"]
+position = Vector2(1184.8, 626.8)
 scale = Vector2(4.08, 4.08)
 
 [node name="Player" parent="." instance=ExtResource("1_jvn65")]
